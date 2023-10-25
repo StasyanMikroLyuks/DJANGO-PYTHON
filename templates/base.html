@@ -1,0 +1,147 @@
+<!DOCTYPE html> <!--тип документа-->
+    <html lang="ru">
+        <head>
+            <meta charset="utf-8"> <!--кодировка, чтоб не было каракулей на странице в браузере-->
+
+            <!--<meta name="description" content="описание страницы для улучшения поиска в поисковике">-->
+            <!--Краткое описание страницы. В некоторых случаях оно может показываться в качестве фрагмента текста в результатах поиска.-->
+            <!--<meta name="googlebot" content="notranslate" />-->
+            <!--чтоб текст на странице не переводился-->
+            <!--<meta name="keywords" content="..."/>-->
+            <!--для яндекс, ключевые слова которые относятся к странице -->
+            
+            <meta name="viewport" content="width=device-width, initial-scale=1" >
+
+            
+            <title>Микро-Люкс Сервис</title> <!--название страницы в браузере-->
+            {% load static %} <!--подключение папки статик с цсс и медиа-->
+            <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+            <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+            <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+            <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+            <link rel="icon"  href="static/media/favicon.ico" type="image/x-icon">
+            <!--добавление иконки-->
+            <link rel="shortcut icon"  href="favicon.ico" type="image/x-icon">
+
+            <script src="https://kit.fontawesome.com/399eccca0f.js"></script>
+            <!--ссылка с сайта с иконками для подключения-->
+            <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+            
+            <!--подключение jquery для javascript чтоб работало адаптивное бургер меню-->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+            <script src="static/js/lightbox-plus-jquery.js"></script>
+            
+            
+            <!--center - координаты центра карты в формате [широта, долгота];
+zoom - коэффициент масштабирования в диапазоне от 1 до 18.-->
+
+            <script type="text/javascript">
+                var map;
+            
+                DG.then(function () {
+                    map = DG.map('map', {
+                        center: [49.817563,  73.106082],
+                        zoom: 13
+                    });
+                    DG.marker([49.817563,  73.106082]).addTo(map);
+                });
+            </script>
+
+        </head> <!--Заголовок документа, кодировка, доп инфо о документе-->
+
+        <body id="top">            
+            <header class="header ">
+                <div class="cont">
+                    <div class="header_inner">
+                        <div class="header-logo">
+                            <img src="static/media/logo.png">
+                            <p1>Микро-Люкс Сервис</p1>                       
+                        </div>                                                
+                        <nav class="nav" id="nav">
+                            <a class="nav_link" href="{%url 'main'%}">О нас</a>
+                            <a class="nav_link" href="{%url 'services'%}">Услуги</a>                            
+                            <a class="nav_link" href="{%url 'sertificates'%}">Партнёры</a>
+                            <a class="nav_link" href="{%url 'personalarea'%}">
+                                 {% comment %} {{ request.user }}  {% endcomment %}
+                                {% if request.user.is_authenticated %}
+                                <p>Welcome, {{ request.user.username }}!</p>
+                                {% else %}
+                                <p>Вход</p>
+                                {% endif %}                                
+                            </a>
+                        </nav><!--навигация, ссылки или иконки-->
+                        
+                        <button class="nav-toggle" id="nav_toggle" 
+                        type="button">
+                            <span class="nav-toggle__item">menu</span>
+                        </button>                        
+                    </div>
+                </div>
+            </header>
+
+            {%block content%}
+            {%endblock%}
+
+            {%block registration%}
+            {%endblock%}
+
+            {%block main%}
+            {%endblock%}
+            
+            {%block services%}
+            {%endblock%}
+
+            {%block sertificates%}
+            {%endblock%}
+
+            
+            
+            <!--блок информации-->         
+            <footer class="footer">                
+                <div class="row">                    
+                    <div class="col">
+                        <img src="static/media/logo.png" class="logo">
+                        <p>ТОО «Микро–Люкс сервис» выполняет работы по поставке, учету, техническому обслуживанию компьютерного, периферийного и сетевого оборудования, программного обеспечения,  администрирование серверов на предприятиях</p>
+                    </div>
+                    <div class="col">
+                        <h3>Office<div class="underline"><span></span></div></h3>
+                        <p>ТОО "Микро-Люкс Сервис"</p>
+                        <p>Проспект Нурсултана Назарбаева, 58, офис 100</p>
+                        <p class="email-id">ml-servis@mail.ru</p>
+                        <h2>8-7212-56-17-06</h2>
+                    </div>
+                    <div class="col">
+                        <h3>Links<div class="underline"><span></span></div></h3>
+                        <ul>
+                            <li><a  href="{%url 'main'%}">О нас</a></li>
+                            <li><a  href="{%url 'services'%}">Услуги</a></li>
+                            <li><a  href="{%url 'registration'%}">
+                                {% if user_id %}
+                                <p>Welcome, {{ request.user.username }}!</p>
+                                {% endif %}
+                                Вход</a></li>
+                            <li><a  href="{%url 'sertificates'%}">Партнеры</a></li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h3>Social Networks<div class="underline"><span></span></div></h3>
+                        <div class="social-icons">
+                            <a class="fa-brands fa-facebook" href="https://www.facebook.com/profile.php?id=100035012867756"></a>
+                            <a class="fa-brands fa-whatsapp" href="https://wa.me/+77471020013"></a>
+                            <a class="fa-brands fa-instagram" href="https://instagram.com/animepower6?igshid=YmMyMTA2M2Y="></a>
+                            <a class="social_a" href="#top"><i class="fa-solid fa-circle-arrow-up"></i></a>
+                            <div class="social">
+                                <div class="map" id="map" style="width: 250px; height:250px"></div>
+                                <!--<a class="social_a" href="#top"><i class="fa-solid fa-circle-arrow-up"></i></a> -->
+                            </div>
+                        </div>                 
+                    </div>                                        
+                </div>
+                <hr class="hr-index">
+                <p class="copyright">Ⓒ 2023 - Все права защищены</p>         
+            </footer>     
+            <script src={% static 'js/animate.js' %}></script>
+            
+        </body>        
+    </html>

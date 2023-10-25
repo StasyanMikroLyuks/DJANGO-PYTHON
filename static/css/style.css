@@ -1,0 +1,1264 @@
+/*CSS ЧИТАЕТСЯ СВЕРХУ ВНИЗ*/
+body{
+    margin: 0; /*отступ*/
+    /*background: url("../images//intro.jpg") no-repeat; /*картинка на заднем фоне, no-repeat чтоб картинка не повторялась на весь экран*/
+    /*background-color: rgb(223, 178, 54);
+    /*font-family: 'Kaushan Script', cursive;*/
+    font-family: 'Montserrat', sans-serif; /*шрифт*/
+    font-size: 15px; /*размер шрифта*/
+    line-height: 1.6; /*межстрочный интервал*/
+    /*background: #eef8ff;*/
+    /*color:#333; цвет шрифта*/       
+}
+
+*,
+*:after,
+*:before{
+    box-sizing:border-box;
+}
+
+.p_wrapper{
+    font-family: 'Montserrat', sans-serif; /*шрифт*/
+    font-size: 20px;
+}
+
+.li_wrapper{
+    font-family: 'Montserrat', sans-serif; /*шрифт*/
+    font-weight:bold;
+    font-size: 20px;
+}
+
+p{
+    margin:0;
+    text-align: justify;
+    /*font-size: 20px;*/
+}
+
+h1, h2, h3, h4, h5 {
+    margin:0;  /*отступ сверху*/
+}
+
+.cont{
+    max-width: 1230px; /*было 1200*/
+    margin: 0 auto;
+    
+    /*убрать что ниже*/
+    padding: 0 15px;
+}
+
+/*шапка начало*/
+.header{
+    width: 100%; /*ширина*/
+    padding: 30px 0px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 1000;
+    background: linear-gradient(to right, #49043e, #c81dd8);
+}
+
+/*стиль для адаптации*/
+.header.fixed{ 
+    padding: 10px 0;
+    
+    background-color: #ec908f;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
+    
+    transform: translate3d(0, 0, 0);
+    
+}
+
+.header.active{
+    background-color: #ec908f;
+}
+/*конец стилей для адаптации*/
+
+.header_inner{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo{
+    font-size:30px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+}
+
+.header-logo img{
+    height: 50px;
+    width: 50px;
+    margin-right:20px;
+}  
+
+.nav{
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.nav_link{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 15px 15px;
+    padding: 15px 15px;
+    color: rgb(252, 252, 252);
+    text-decoration: none; /*чтоб убрать полоску от гиперссылки*/
+
+    border-radius: 10px; /*округление*/
+    transition-duration: 500ms, 2s; /*длительность перехода анимации*/
+    transition-property: transform, background-color;
+    transition-delay:0, 500ms;
+    transition-timing-function: linear;
+}
+
+.nav_link:hover {
+    background-color: rgb(39, 0, 39);
+    border-radius: 10px;   
+}
+
+.nav_link:hover:after{
+    display: block;
+}
+
+/*бургер меню для телефона*/
+.nav-toggle{
+    width: 30px;
+    padding: 10px 0;
+    display: none; /*скрыть*/
+    
+    font-size: 0;
+    color: transparent; /*скрыть текст*/
+    
+    border: 0; /*убрать стиль у кнопки*/
+    background: none; /*убрать стиль у кнопки*/
+    cursor: pointer;
+    
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 1;
+    
+}
+
+.nav-toggle__item{ /*горизонтальная полоска*/
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    
+    transition: background .2s linear;
+    
+}
+
+.nav-toggle.active .nav-toggle__item{
+    background: none;
+}
+
+/*при активном бургере полоски становятся в крестик*/
+.nav-toggle.active .nav-toggle__item:before{
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggle.active .nav-toggle__item:after {
+    bottom: 0;
+    transform: rotate(-45deg);
+}
+
+/*дополнительные полоски сверху снизу*/
+.nav-toggle__item:before,
+.nav-toggle__item:after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    
+    background-color: #fff;
+    
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    
+    transition: transform .2s linear;
+}
+
+.nav-toggle__item:before{
+    top: -8px;
+}
+
+.nav-toggle__item:after{
+    bottom: -8px;
+}
+/*шапка конец*/
+
+/*след блок*/
+.intro{
+    display:flex; 
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 500px; 
+    background: linear-gradient(to right, #49043e, #c81dd8);
+    background-size: cover ;
+}
+
+/*стиль для адаптации*/
+.intro.active{
+    display:none;
+}
+/*конец стиля*/
+
+.intro_inner{
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro_title{
+    margin-top: 20px;
+    color:#fff;
+    font-size: 85px;
+    font-weight: 700;
+    text-transform: uppercase; 
+    text-align: center;
+    line-height: 1.5; 
+}
+
+.intro_title.active{
+    display:none;
+}
+
+.intro_title::after{ 
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #fff;
+    margin:60px auto 60px; 
+}
+    
+.section--devices{ /*задний фон для 5 блока*/
+    background: url("../images/images/background.png");
+}
+
+.section__header{
+    margin-top: 3vmax;
+    width:100%;
+    max-width: 1500px;
+    text-align: center;
+}
+
+.section__suptitle{
+    font-size: 24px;
+    color:#333;
+    text-align: justify;
+}
+
+.section__title {
+    padding-top: 100px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.section__title:after{ /*красная полоска*/
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: red;
+    margin: 33px auto; /*выравнивание по центру*/
+}
+
+.section__text{
+    font-size: 15px;
+    color:#333;
+}
+
+.about{
+    margin-top: 40px;
+    display: flex; /*чтоб картинки были по горизонтали*/
+    justify-content: space-between; /*раздвинуть друг от друга*/       
+}
+
+.about__item{
+    width: 380px;
+    position: relative; /*позиционирование текста поверх картинки*/
+
+    background-color: aqua; /*позади фотографии синий фон*/
+}
+
+.about__item:hover .about_img{ /*сдвиг картинки при наводе вверх влево*/
+    transform: translate3d(-10px, -10px, 0);
+}
+
+.about__item:hover .about_img img{
+    opacity: .1; /*соотношение залития градиентом картинки*/
+}
+
+.about__item:hover .about__text{ /*показ текста при наводе на картинку*/
+    opacity: 1;
+}
+
+.about_img{ /*градиент*/
+    background: linear-gradient( /*сверху вниз*/
+        to bottom, #f38181, #fce38a);
+
+    transition: transform .1s linear; /*плавность сдвига*/      
+}
+
+.img{
+    height: 250px;
+    width: 380px;
+}
+
+.about_img img{
+    display: block;
+    transition: opacity .1s linear;
+    
+}
+
+.about__text{ /*добавляет надпись при наводе на картинку*/
+    width: 100%;
+    font-size: 18px;
+    color:#fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0; /*скрытие элемента*/
+
+
+    /*позиционирование текста на картинке по центру*/
+    position: absolute; 
+    top: 50%;
+    left: 0;
+    z-index: 2;
+    transform: translate3d(0, -50%, 0);
+
+    transition: opacity .2s linear;
+}
+
+/*3 блок*/
+.statistics{ 
+    background-color: #95e1d3;
+    margin-top:10px;
+}
+
+.stat{
+    display: flex;/*текст по центру*/
+    flex-wrap:wrap;/*для адаптации под планшет*/
+}
+
+.stat__count{
+    margin-bottom: 20px;
+    font-size: 72px;
+    font-weight: bold;
+    line-height: 1; /*межстрочный отступ для текста*/
+}
+
+.stat__text{
+    font-size: 20px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+}
+
+.stat__item{
+    flex: 1 1 0;/*отступ между значениями*/
+    border-left:1px solid #b5eae0;
+    /*линия возле чисел слева, 1 значение отвечает за толщину линии, 2 за свойство*/
+    text-align: center;
+    color:#fff;
+    padding: 70px 25px;/*отступ от текста вверх/вниз 70, лево/право 25*/
+}
+
+.stat__item:last-child{
+    border-right:1px solid #b5eae0;
+}
+
+/*4 блок(сервисы)*/
+.services{
+    display:flex;  
+    flex-wrap:wrap;
+}
+
+.services__item{    
+    width: 33.3333%;
+    /*flex: 1 1 0; *//*отступ между значениями*/
+    padding-left: 85px; /*отступ от текста*/ 
+    padding-right: 35px;
+    position: relative; /*Элемент остается в обычном потоке документа,
+    но его можно сдвигать используя свойства 
+    top, right, bottom, left относительно его позиции в документе,
+    а так же задавать позицию по оси Z используя z-index*/
+    margin-bottom: 30px;
+}
+
+.services__icon{
+    position: absolute;
+    left:28px; /*отступ слева на ... пикселей*/
+    height: 28px;
+    width: 32px;
+    top:0;
+    z-index: 1;    
+}
+
+.services__title{
+    margin-bottom: 10px; 
+    /*Задает внешний отступ снизу у элемента*/
+    text-transform: uppercase;
+    color:#333;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.services__text{
+    color:#999;
+    font-size: 20px;
+}
+
+.hr{
+    display: block;
+    margin: 30px 0px; /*внешнего отступа у элемента
+    Первый - внешний отступ сверху и снизу, второй - внешний отступ слева и справа*/
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5; 
+    border: none; /*Убирает границу у элемента*/
+}
+
+/*два стиля чтоб выравнять таблицы по центру*/
+.tablemargin{
+    margin: 20px 200px; 
+    /*отступ от Используя два параметра. */
+    /* Первый - внешний отступ сверху и снизу, второй - внешний отступ слева и справа*/
+}
+
+.table{
+    margin: auto;
+}
+
+th {
+  font-size: 17px;
+  font-weight: normal;
+  background: #b9c9fe;
+  border-top: 4px solid #aabcfe;
+  border-bottom: 1px solid white;
+  color: #039;
+  padding: 8px;
+}
+td {
+  background: #e8edff;
+  border-bottom: 1px solid white;
+  color: #669;
+  border-top: 1px solid transparent;
+  padding: 8px;
+  font-size: 17px;
+}
+tr:hover td {
+  background: #ccddff;
+}
+
+
+
+
+/*4 блок*/
+
+
+.title{    
+    font-size: 100px; /*размер заголовка*/
+    color:red;
+    font-size: 25px; /*размер шрифта*/
+}
+
+.card{
+    width: 300px;    /*ширина*/
+    margin: 30px ; /*выравнивание по центру*/    
+    background-color: white; /*задний фон*/
+    box-shadow:0 5px 10px green;  /*тень, параметры: сдвиг по оси x, y, размытие тени*/
+    border-radius: 10px; /*закругление краёв*/
+    display: inline-block; /*выравнивание в строку*/
+}
+
+.card-photo{
+    display: block; /*картинка блокируется*/
+    width: 200px;
+    height: 200px;
+    margin: 0px auto; 
+    border-radius: 50%; /*округление картинки*/    
+}
+
+.card-title{
+    font-size: 20px;
+    text-align: center; /*позиция текста*/
+    color:purple;    
+}
+
+.card-suptitle{
+    font-size: 15px;
+    text-align: center; /*позиция текста*/
+    color:purple;    
+}
+
+.team{
+    margin: 50px 0;
+}
+
+.team__inner{
+    display:flex;
+    flex-wrap: wrap; /*перенос на следующую строку*/
+    margin-top: 100px;
+    justify-content: center;
+}
+
+.team__item{
+   width: 25%;  /*шириной 25%*/
+   padding: 0 15px;
+   
+}
+
+.team__photo{ /*для адаптивности под телефон*/
+    margin-bottom: 10px;
+    display:block;
+    max-width: 100%;
+    height: auto;
+}
+
+.team__name{
+    margin-bottom: 15px;
+    font-size:22px;
+    color:#333;     
+    font-weight:bold;
+}
+
+.team__prof{
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #e84545;
+    text-transform: uppercase;    
+}
+
+.team__text{    
+    text-align: justify; /*выравнивание текста по ширине*/
+    line-height: 1.5; /*высота текста*/
+    font-size: 20px;
+    
+}
+
+.infotext{
+    flex-basis: 25%;
+    padding: 10px;
+}
+
+/*блок информации*/
+.footer{
+    width: 100%;
+    /*position: absolute;*/
+    bottom: 0;
+    background: linear-gradient(to right, #00093c, #2d0b00);
+    color: #fff;
+    padding: 100px 0 30px;/*оступ 100 пикселей сверху и 30 снизу*/
+    font-size: 13px;
+    line-height: 20px ;       
+    margin-top: auto; /*прижать к низу*/
+}
+
+.row{
+    width:85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.col{
+    flex-basis: 25%; /*текст идёт столбиком*/
+    padding: 10px; /*оступ слева 10пикселей*/
+}
+
+.col:nth-child(2), .col:nth-child(3){
+    flex-basis: 15%;
+}
+
+.logo{
+    width: 80px;
+    margin-bottom: 30px;
+}
+
+.col p{
+    font-size:16px;
+}
+
+.col h3{
+    width: fit-content;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.col a{
+    font-size:18px;
+}
+
+.email-id{
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+ul{
+    padding:0%; 
+}
+
+ul li{
+    list-style:none; /*убрать точки у списка*/
+    margin-bottom: 20px; /*отступ между*/    
+}
+
+ul li a{
+    text-decoration: none; /*убрать нижнее подчёркивание*/
+    color:#fff;
+}
+
+.social-icons .fa-brands{    
+    border-radius: 50%; /*контур вокруг иконки*/
+    width: 40px; /*ширина контура*/
+    height: 40px; /*высота контура*/
+    background-color: #fff;
+    text-align: center; /*чтоб контур распологался по центру иконки*/
+    color:#333;
+    line-height: 40px; /*отступ*/
+    font-size: 20px;
+    margin-right: 15px; /*отступ от иконки вправо */
+    cursor: pointer;
+}
+
+.social-icons .fa-solid{    
+    border-radius: 50%; /*контур вокруг иконки*/
+    width: 40px; /*ширина контура*/
+    height: 40px; /*высота контура*/
+    background-color: #fff;
+    text-align: center; /*чтоб контур распологался по центру иконки*/
+    color:#333;
+    line-height: 40px; /*отступ*/
+    font-size: 20px;    
+    cursor: pointer;
+}
+
+.hr-index{
+    width: 90%; /*не во всю ширину*/
+    border: 0; /*убрать контур*/
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto; /*отступ от текста вверх*/
+}
+
+.copyright{
+    text-align: center;
+}
+
+.underline{
+    width: 100%;    
+    height: 5px;
+    background: #767676;
+    border-radius: 3px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    overflow: hidden;
+}
+
+.underline span{
+    width: 15px;
+    height: 100%;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    animation: moving 2s linear infinite;
+}
+
+@keyframes moving{
+    0%{
+        left: 0px;        
+        
+    }
+    100%{
+        left: 100%;
+    }
+}
+
+.map{
+    margin: 20px 0px 0px 0px;      
+}
+
+.social{
+    display: flex;        
+}
+
+.social_a{
+    padding-top:30%;
+    padding-left: 10%;
+}
+
+
+
+
+/*страница отправки формы*/
+.wrapperemail{
+    background: url(../media/background.jpg) center no-repeat;
+    background-size: cover ; 
+    margin-top: 140px;
+    
+}   
+
+.container_email{
+    margin-left: 100px;
+    width: 100;
+    max-width: 1000px;
+    padding: 40px 20px; /*отступ сверху и снизу по 40 пикселей, слева справа по 20 пикселей*/
+}
+
+.content{
+    display: flex; /*чтоб был перенос на другую часть блока*/
+    align-items: center; /*чтоб элементы расположились по центру формы*/    
+    justify-content: space-between; /*чтоб элементы распределились правильно по форме*/ 
+    background: #fff;
+    padding: 40px; /*общий отступ изнутри по 40 пикселей сверху снизу слева справа*/
+    border-radius: 30px; /*скругление границ контейнера*/
+    box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2); /*добавляет небольшую тень у контейнера снизу и справа*/
+}
+
+.left-side{
+    width: 20%;
+    height: 100%;
+    position: relative;     
+}
+
+.left-side::before{           
+    content:""; 
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background: #afafb6;
+    left: 190px;
+    transform: translateY(-3.5%); /*сдвиг объекта снизу вверх на 17%*/
+}
+
+.right-side{
+    width: 75%;
+    margin-left: 75px;
+}
+
+.details{
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+/*обращение к тегу внутри класса*/
+.details i{
+    font-size: 25px;
+    color:#3e2093;
+    margin-bottom: 10px; /*отступ снизу*/
+}
+
+.topic{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.text-one,
+.text-two{
+    font-size: 14px;
+    color: #afafb6;
+}
+
+.topic-text {
+    font-size: 23px;
+    font-weight: 600; /*жирный*/
+    color: #3e2093;
+    margin-bottom: 10px;
+}
+
+.form{
+    font-family: sans-serif ;
+    max-width: 600px; /*максимальная ширина формы*/
+    margin: 0px auto; /*отобразить по центру*,(0 это отступ сверху снизу по 0, авто автоматически браузер посчитает и выставит по центру)*/
+    text-transform: uppercase;
+    color:#fff; /*цвет label*/    
+    padding: 30px 30px; /*отступ сверху снизу 30 пикселей, слева справа 30 пикселей*/     
+    
+}
+
+/*после отправки формы*/
+.form__body{
+    position: relative;
+}
+.form__body::after{
+   content: "";
+   position: absolute; 
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(179, 176, 176, 0.9) url('../images/loading.gif') center / 50px no-repeat;
+   opacity: 0;
+   visibility: hidden;
+}
+/*когда получим класс sending с js*/
+.form__body._sending::after { 
+    opacity: 1;
+    visibility: visible;
+}
+
+.form__body
+
+.form__title{
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.form__item input,
+.form__item textarea,
+.form__item select{
+    margin-bottom: 20px; /*отступ вертикальный между полями*/   
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #f0f1f8;
+    border-radius: 10px;
+   
+}
+
+.form__label{
+    font-size:18px;
+    display:block;
+    margin-bottom: 10px;   
+}
+
+.form__input{ /*поля для ввода*/
+    height: 50px;
+    padding: 0px 20px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.form__input[type="text"]{    
+    font-size: 20px;    
+    text-align: center;
+    outline:none; /*убрать стандартное выделение поля*/        
+}
+
+.form__input[type="text"]:focus{    
+    border-color: #3334;
+    width: 300px;
+}
+
+.form__input._error{ /*стиль для класса .error из js*/
+    box-shadow: 0 0 15px red;
+}
+
+textarea.form__input{
+    min-height: 120px;
+    resize:vertical;/*изменение поля только по вертикали*/
+    padding: 20px;
+}
+
+.select{
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 0px 20px;
+}
+
+.file{
+
+}
+
+.file__item{
+    position:relative;
+}
+
+.file__input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100%;
+    opacity: 0;
+    font-size: 0;
+    cursor: pointer;/*чтоб появилась рука при наводе курсора*/
+}
+
+.file__button{
+    display: inline-flex;
+    min-height: 40px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: #77608d;
+    color:#fff;
+    padding: 0px 20px;
+} 
+
+.file__prewiew{
+    display: inline-block;
+    max-width: 100px;
+    padding: 10px 0px 0px 0px;
+}
+
+.file__prewiew img{
+    max-width: 100%;
+}
+
+.checkbox{
+    
+}
+
+/*чекбокс с классом error с js обращается к label before*/
+.checkbox._error .checkbox__label::before{
+    box-shadow: 0 0 15px red;
+}
+
+.form__button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+    background-color: green;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 20px;
+    border-color: #fff;
+    /*box-shadow: 0 5px 0 #161b13;*/
+    transition: background-color 0.5s ease 0s;
+    /*плавность изменения цвета кнопки*/
+    position: relative;
+    top:0;
+}
+
+.form__button:hover{
+    background-color: #4f6146;
+}
+
+.form__button:active{
+    top: 3px;
+    box-shadow: 0 2px 0 #161b13;
+}
+
+/*никита*/
+.main__about{
+    display:flex;    
+    padding: 30px 0 0 0;
+}
+
+.h1_wrapper{
+    padding: 100px 0px;
+    text-align: justify; /*выравнивание текста по ширине*/
+}
+
+.about__left_img img{
+    border-radius: 50%;
+}
+
+.about__right_text{
+    margin:0px 100px;
+}
+.about__right_text h1{
+    font-family: sans-serif;
+    display: inline-block;
+    border-bottom: 3px solid orange;
+    padding-bottom: 20px;
+}
+
+.about__right_text p{
+    margin: 30px 0 50px 0;
+}
+
+/*страница с сертификатами*/
+.sertificate__info{
+    padding: 80px 0;
+}
+
+.sertificate_text{
+    margin-bottom: 20px;
+}
+
+.sertificate_text p{
+    font-size: 20px;
+}
+
+.sertificates{
+    display: flex; /*чтоб элементы были в одну строку*/
+    margin-left: 40px;
+    margin-right: 40px;
+    flex-wrap: wrap; /*перенос на следующую строку*/
+    justify-content: center; /*чтоб элементы были по центру*/
+}
+
+.sertificate__item {
+    margin: 10px 50px;
+    height: 250px;
+    width: 180px;
+}
+.sertificate__item_border{       
+    height: 190px;
+    width: 175px;
+    border:2px solid #8b584e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.sertificate__item_image{
+    height: 180px;
+    width: 160px;
+}
+
+.sertificate__item img:hover{
+    transform: scale(1.1); /*при наведении увеличивается*/
+}
+
+.register{
+    justify-content: center;
+}
+
+
+
+@media (max-width: 1230px){
+    
+    .intro_title{
+        font-size: 120px;
+    }
+    
+    
+}
+
+@media (max-width: 990px){ /*планшет*/
+    
+    .intro_title{
+        font-size: 80px;
+    }
+    
+    /*начало блока статистики*/
+    .stat{
+        justify-content:center;
+    }
+    
+    .stat__item{
+        flex:none;
+        width: 33.3333%;
+        padding-top: 30px;
+        
+        
+        border: 0;
+    }
+    
+    .stat__item:last-child{
+        border-right:0;
+    }
+    /*конец блока статистики*/
+    
+    /*сервисы*/
+    .services__item{
+        width:50%;
+    }
+    
+    .hr{
+        display:none;
+    }
+
+    .main__about
+    {
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .about__left_img
+    {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+}
+    
+    
+@media (max-width: 770px){ /*планшет*/
+   .nav { /*убирает навигацию стандартную*/
+       display: none;
+       width: 100%;
+       
+       position: absolute;
+       top: 100%;
+       left: 0;
+       
+       background-color: #eb8b8d;
+   }
+   
+   .nav.active{
+       display:block;
+   }
+   
+   .nav_link{
+       display: block; /*чтоб располагались по вертикали*/
+       margin: 0;
+       padding: 8px 20px ;
+   }
+   
+   .nav-toggle{
+       display: block;
+   }
+   
+   .header {
+       padding: 10px 0;
+   }
+   
+   /*центрировать картинку*/
+   .team__photo{
+       display: block;
+       margin-left: auto;
+       margin-right: auto
+   }
+   
+   .team__name{
+       text-align:center;
+   }
+   
+   .team__prof{
+       text-align:center;
+   }
+   
+   .hr{
+       display:none;
+   }
+   
+   
+   /*страница услуги*/
+   .services{
+       justify-content:center;
+   }
+   
+   .services__item{
+       width: 100%;
+       max-width: 400px;
+       padding-left: 55px;
+       padding-right: 0px;
+   }
+   
+   .services__icon{
+       left:0;
+   }
+   
+   /*адаптация таблиц*/
+   .tablemargin{
+       margin: 20px -10px;
+   }
+   
+   
+   .team__item{
+       width: 100%;
+       margin-bottom: 50px;
+   }
+}
+
+@media (max-width: 575px){
+    /*телефон*/
+   
+
+    /*начало блока статистики*/
+    .intro_title{
+        font-size: 40px;
+    }
+    
+    .stat__item{
+        width: 100%;
+        border-bottom: 1px solid #b5eae0;
+    }
+    
+    .stat__item:last-child{
+        border-bottom:0;
+    }
+    
+    .stat__count{
+        font-size: 52px;
+    }
+    /*конец блока статистики*/
+    
+    
+    .about__left_img{
+        transform: scale(0.5);
+    }
+    
+    .about__right_text{
+        margin: 0px 0px 0px 0px;
+    }
+    
+    .footer{
+      bottom: unset;
+    }
+    
+    .col{
+        flex-basis:100%;
+    }
+    
+    .col:nth-child(2), .col:nth-child(3){
+        flex-basis: 100%;
+    }
+
+    .map {
+        display: none;
+        margin-left: auto;
+        margin-right: auto
+    }
+}
+    
+
+/*справка 
+border - задаёт границу со всех сторон
+padding - внутренний отступ
+margin - внешний отступ
+margin: 0px;
+Убирает все внешние отступы
+margin: 15px; 
+Используя один параметр. Задает внешний отступ со всех сторон
+margin: 20px 25px; 
+Используя два параметра. Первый - внешний отступ сверху и снизу, второй - внешний отступ слева и справа
+margin: 5px 20px 20px;
+Используя три параметра. Первый - внешний отступ сверху, второй - внешний отступ справа и слева, третий - внешний отступ снизу
+margin: 10px 20px 30px 15px;
+Используя четыре параметра. 
+Первый - внешний отступ сверху, 
+второй - внешний справа, 
+третий - внешний отступ снизу, 
+четвертый - внешний отступ слева или с помощью команд
+margin-top,               
+margin-right,              
+margin-bottom,                  
+margin-left 
+
+   

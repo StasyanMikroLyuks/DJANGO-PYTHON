@@ -1,0 +1,217 @@
+<!DOCTYPE html> <!--тип документа-->
+    <html>
+        <head>
+            <meta charset="utf-8"> <!--кодировка, чтоб не было каракулей на странице в браузере-->
+            <link rel="stylesheet" href="abc/style.css"> <!--подключение css-->
+
+
+
+            <!--<meta name="description" content="описание страницы для улучшения поиска в поисковике">-->
+            <!--Краткое описание страницы. В некоторых случаях оно может показываться в качестве фрагмента текста в результатах поиска.-->
+            <!--<meta name="googlebot" content="notranslate" />-->
+            <!--чтоб текст на странице не переводился-->
+            <!--<meta name="keywords" content="..."/>-->
+            <!--для яндекс, ключевые слова которые относятся к странице -->
+            
+            <!--ОБЯЗАТЕЛЬНАЯ СТРОКА ДЛЯ АДАПТАЦИИ-->
+            <meta name="viewport" content="width=device-width, initial-scale=1" >
+
+
+            
+            <title>Микро-Люкс Сервис</title> <!--название страницы в браузере-->
+            <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+            <link rel="icon"  href="favicon.ico" type="image/x-icon">
+            <!--добавление иконки-->
+            <link rel="shortcut icon"  href="favicon.ico" type="image/x-icon">
+
+            <script src="https://kit.fontawesome.com/399eccca0f.js"></script>
+            <!--ссылка с сайта с иконками для подключения-->
+            <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <!--center - координаты центра карты в формате [широта, долгота];
+zoom - коэффициент масштабирования в диапазоне от 1 до 18.-->
+
+
+
+
+            <script type="text/javascript">
+                var map;
+            
+                DG.then(function () {
+                    map = DG.map('map', {
+                        center: [49.817563,  73.106082],
+                        zoom: 13
+                    });
+                    DG.marker([49.817563,  73.106082]).addTo(map);
+                });
+            </script>
+        </head><!--Заголовок документа, кодировка, доп инфо о документе-->
+        
+        <body id="top">
+            <header class="header">
+                <div class="cont">
+                    <div class="header_inner">
+                        <div class="header-logo">
+                            <img src="images/logo.png">
+                            <p1>Микро-Люкс Сервис</p1>                       
+                        </div>                                                
+                        <nav class="nav" id="nav">
+                            <a class="nav_link" href="index.html">О нас</a>
+                            <a class="nav_link" href="services.html">Услуги</a>
+                            <a class="nav_link" href="email.html">Подать заявку</a>
+                            <a class="nav_link" href="sertificates.html">Партнёры</a>
+                            <!--<a class="nav_link" href="#">Магазин запчастей</a>-->
+                            <!--<a class="nav_link" href="#">Контакты</a>-->                         
+                        </nav><!--навигация, ссылки или иконки-->
+                        
+                        <button class="nav-toggle" id="nav_toggle" 
+                        type="button">
+                            <span class="nav-toggle__item">menu</span>
+                        </button>
+                        
+                    </div>
+                </div>
+            </header>            
+
+            <div class="wrapperemail">                
+                <div class="cont">
+                    <div class="container_email">
+                        <div class="content">
+                            <div class="left-side">
+                                <!--address просто класс, через пробел идёт общий класс который можно привязать к нескольким классам-->
+                                <div class="address details">       
+                                    <i class="fas fa-map-marker-alt"></i>                     
+                                    <div class="topic">Адрес</div>
+                                    <div class="text-one">г.Караганда, район Казыбек-БИ</div>
+                                    <div class="text-two">Проспект Нурсултана Назарбаева, 58, офис 100</div>
+                                </div>
+                                <div class="phone details">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <div class="topic">Телефон</div>
+                                    <div class="text-one">8-7212-56-16-06</div>
+                                </div>
+                                <div class="email details">
+                                    <i class="fas fa-envelope"></i>
+                                    <div class="topic">Почта для деловых вопросов</div>
+                                    <div class="text-one">ml-servis@mail.ru</div>
+                                    <div class="text-two"></div>
+                                </div>                 
+                            </div>
+                            <div class="right-side">
+                                <div class="topic-text">Отправьте нам сообщение</div>
+                                <p>
+                                    Если у вас есть какие-то вопросы,
+                                    предложения по сотрудничеству 
+                                    заполните форму ниже.
+                                </p>
+
+                                <form action="sendmail.php" method="post" id="mainForm" class="form__body">                            
+                                    <!--имя-->
+                                    <div class="form__item">
+                                        <label for="formName" class="form__label">Имя*:</label>
+                                        <input id="formName" type="text" name="name" class="form__input _req">
+                                    </div>
+                                    <!--номер телефона-->
+                                    <div class="form__item">
+                                        <label for="formNumber" class="form__label">Номер телефона*:</label>
+                                        <input id="formNumber" type="text" name="number" class="form__input _req">
+                                    </div>
+                                    <!--почта-->
+                                    <div class="form__item">
+                                        <label for="formEmail" class="form__label">E-mail*:</label>
+                                        <input id="formEmail" type="text" name="email" class="form__input _req">
+                                    </div>
+                                    
+                                    <!--поле: сообщение-->
+                                    <div class="form__item">
+                                        <label for="formMessage" class="form__label">Сообщение*:</label>
+                                        <textarea name="message" id="formMessage" class="form__input"></textarea>                            
+                                    </div>
+                                    
+                                    <!--возраст-->
+                                    <div class="form__item">
+                                        <div class="form__label">Выберите удобный для вас метод связи:</div>
+                                        <select name="age" class="select">
+                                            <option value="Позвонить по номеру телефона">Позвонить по номеру телефона</option>
+                                            <option value="Написать сообщение на WhatsApp по номеру телефона">Написать сообщение на WhatsApp по номеру телефона</option>
+                                            <option value="Написать вам на почту">Написать на эл.почту</option>    
+                                        </select>
+                                    </div>
+                                    
+                                    <!--добавление фотографии-->
+                                    <!--<div class="form__item">-->
+                                    <!--    <div class="form__label">Прикрепить фото</div>-->
+                                    <!--    <div class="file">-->
+                                    <!--        <div class="file__item">-->
+                                    <!--             id ставятся для связи джаваскрипта с html  -->
+                                    <!--            <input id="formImage" accept=".jpg, .png, .gif" type="file" name="image" class="file__input">-->
+                                    <!--            <div class="file__button">Выбрать</div>-->
+                                    <!--        </div>-->
+                                    <!--        <div id="formPrewiew" class="file__prewiew"></div>-->
+                                    <!--    </div>-->
+                                    <!--</div>-->
+                                    
+                                    <!--<div class="form__item">
+                                        <div class="checkbox">
+                                            <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input _req">
+                                            <label for="formAgreement" class="сheckbox__label">Я даю согласие на обработку персональных данных в соотвествии с <a href="">Условиями</a>*</label>
+                                        </div>
+                                    </div>-->
+
+                                    <!--кнопка отправки-->
+                                    <button type="button" id="mainBtn" class="form__button">Отправить</button>
+                                </form>    
+                            </div>         
+                        </div>
+                    </div>   
+                </div>   
+            </div>
+                
+
+            <!--блок информации-->         
+            <footer class="footer">                
+                <div class="row">                    
+                    <div class="col">
+                        <img src="images/logo.png" class="logo">
+                        <p>ТОО «Микро–Люкс сервис» выполняет работы по поставке, учету, техническому обслуживанию компьютерного, периферийного и сетевого оборудования, программного обеспечения,  администрирование серверов на предприятиях</p>
+                    </div>
+                    <div class="col">
+                        <h3>Office<div class="underline"><span></span></div></h3>
+                        <p>ТОО "Микро-Люкс Сервис"</p>
+                        <p>Проспект Нурсултана Назарбаева, 58, офис 100</p>
+                        <p class="email-id">ml-servis@mail.ru</p>
+                        <h2>8-7212-56-17-06</h2>
+                    </div>
+                    <div class="col">
+                        <h3>Links<div class="underline"><span></span></div></h3>
+                        <ul>
+                            <li><a  href="index.html">О нас</a></li>
+                            <li><a  href="services.html">Услуги</a></li>
+                            <li><a  href="email.html">Подать заявку</a></li>
+                            <li><a  href="sertificates.html">Партнеры</a></li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h3>Social Networks<div class="underline"><span></span></div></h3>
+                        <div class="social-icons">
+                            <a class="fa-brands fa-facebook" href="https://www.facebook.com/profile.php?id=100035012867756"></a>
+                            <a class="fa-brands fa-whatsapp" href="https://wa.me/+77471020013"></a>
+                            <a class="fa-brands fa-instagram" href="https://instagram.com/animepower6?igshid=YmMyMTA2M2Y="></a>
+                           <div class="social">
+                                <div class="map" id="map" style="width: 250px; height:250px"></div>
+<a class="social_a"href="#top"><i class="fa-solid fa-circle-arrow-up"></i></a> 
+                            </div>                      
+                        </div>                 
+                    </div>                                        
+                </div>
+                <hr class="hr-index">
+                <p class="copyright">Ⓒ 2022 - Все права защищены</p>         
+            </footer>     
+            <script src="animate.js"></script>
+
+                <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+            <script src="script.js"></script>
+
+        </body>        
+    </html>

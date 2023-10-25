@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{%block registration%}
+<div class="wrapperemail">                
+    <div class="cont">
+        <div class="container_email">
+            <div class="content">
+                <div>                   
+                    <div class="topic-text">Отправьте нам сообщение</div>
+                        <p>
+                                    Если у вас есть какие-то вопросы,
+                                    предложения по сотрудничеству 
+                                    заполните форму ниже.
+                        </p>                                                        
+                            <div class="form__item">
+                                <h1> Регистрация </h1>
+                                <form method="POST" action="/users/login"  id="registration-form" > 
+                                    <ul>
+                                        {% for field, error_message in form.errors.items %}
+                                            {% for message in error_message %}
+                                                <p style="color: red;">{{ message }}</p>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                    {% if messages %}
+                                    <ul>
+                                        {% for message in messages %}
+                                            <li style="color: green;">{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <form action="{%url 'registration'%}">
+                                    <button class="form__button">Войти</button>
+                                    </form>
+                                    {% endif %}
+                                {% csrf_token %}
+                                <div class="form__item">
+                                    <input name="login" type="text" id="login-field" class="" placeholder="Логин">
+                                </div>
+                                <div class="form__item">
+                                    <input name="password" type="text" id="password-field"  class="" placeholder="Пароль">
+                                </div>
+                                <button class="form__button" type="submit" onclick="showLoginForm()">Регистрация</button>                                
+                                </form>
+                            </div>                            
+                        </div>     
+                    </div>
+                </div>
+                <script>
+                    {% comment %} скрытие объектов при нажатии на кнопку регистрации  {% endcomment %}
+                    function showLoginForm() {
+                        document.getElementById("login-field").style.display = "none";
+                        document.getElementById("password-field").style.display = "none";
+                        document.getElementById("registration-form").style.display = "none";
+                    }
+                </script>                    
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
