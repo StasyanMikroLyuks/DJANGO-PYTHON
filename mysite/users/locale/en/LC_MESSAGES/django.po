@@ -1,0 +1,2 @@
+msgid "О нас"
+msgstr "About Us"

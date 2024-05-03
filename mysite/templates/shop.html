@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{%block shop%}
+
+<div class="team">
+    <div class="cont">
+        <div class="section__header">
+            <h2 class="section__title">Наши товары</h2>   
+        </div> 
+        {% if request.user.is_authenticated %}
+            <p>Можете выбрать товары для установки</p> {% comment %}{{ request.user.username }} {% endcomment %}
+            {% else %}
+            <p>Чтоб выбрать товары нужно авторизоваться</p>
+        {% endif %}             
+                    
+      
+        <div class="team__inner">
+            {% for product in products %}
+                <div class="team__item">
+                    <img class="team__photo" src="{{ product.image.url }}" style="width: 270px; height: 290px">
+                    <div class="team__name">{{ product.name }}</div>
+                    <div class="team__prof">Количество в наличии: {{ product.stock }}</div>
+                    <div class="team__prof">Цена: {{ product.price }}</div>
+                    <div class="team__prof">Есть на складе: {{ product.available }}</div>
+                    <div class="team__text">
+                        <p>{{ product.description }}</p>
+                    </div>
+                    {% if request.user.is_authenticated %}        
+                    <button class="form__button" type="submit">Купить</button>                                            
+                    {% endif %}  
+                </div>
+                {% if forloop.counter|divisibleby:"4" and not forloop.last %}
+                    <hr class="hr">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>    
+</div>   
+
+
+{%endblock%}

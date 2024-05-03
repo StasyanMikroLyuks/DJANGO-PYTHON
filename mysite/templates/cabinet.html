@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block cabinet%}
+<section class="section">
+    <div class="cont">
+        <div class="section__header">
+            <h2 class="section__title">Добро пожаловать в ваш личный кабинет</h2> 
+            {% if request.user.is_authenticated %}
+                <a  href="{% url 'logout_user' %}">Выход</a>
+                <div id="outputContainer">
+                    <!-- Здесь будут отображаться данные из LocalStorage -->
+                </div>
+                {%else%}
+                <p>вы не авторизованы</p>
+            {% endif %}   
+        </div>  
+        <!-- Дополните содержимое личного кабинета по своим потребностям -->
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var outputContainer = document.getElementById('outputContainer');
+
+        // Получение данных из LocalStorage
+        var storedData = JSON.parse(localStorage.getItem('selectedServices')) || {};
+
+        // Проверка наличия данных
+        if (Object.keys(storedData).length > 0) {
+            var dataList = document.createElement('ul');
+
+            // Перебор данных и создание элементов списка
+            for (var serviceKey in storedData) {
+                if (storedData.hasOwnProperty(serviceKey)) {
+                    var serviceData = storedData[serviceKey];
+                    var listItem = document.createElement('li');
+                    listItem.textContent = serviceData.serviceName + ' - ' + serviceData.servicePrice + ' ₸';
+                    dataList.appendChild(listItem);
+                }
+            }
+
+            // Вставка списка в контейнер
+            outputContainer.appendChild(dataList);
+        } else {
+            // Вывод сообщения, если данных нет
+            outputContainer.innerHTML = '<p>Нет сохраненных данных в LocalStorage</p>';
+        }
+    });
+</script>
+
+{% endblock %}

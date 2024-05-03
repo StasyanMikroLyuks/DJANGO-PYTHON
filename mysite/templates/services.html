@@ -1,0 +1,424 @@
+{% extends "base.html" %}
+
+{%block services%}
+
+            <section class="section">
+                <div class="cont">
+                    <div class="section__header">
+                        <h3  class="section__title">Услуги</h3>                  
+                    </div> 
+
+                    <div class="services">
+                        <div class="services__item">
+                            <img class="services__icon" 
+                            src="/media/service/1.jpg" onclick="scrollToTarget1()" id="clickableImage" alt="">
+                            <div class="services__title">ВОССТАНОВЛЕНИЕ ИНФОРМАЦИИ</div>
+                            <div class="services__text">Восстановление информации с повреждённых/удалённых/форматированных 
+                                разделов жёсткого диска</div>                            
+                        </div>
+
+                        <div class="services__item">
+                            <img class="services__icon" 
+                            src="/media/service/2.jpg" onclick="scrollToTarget1()" id="clickableImage" alt="">
+                            <div class="services__title">ДИАГНОСТИКА КОМПЬЮТЕРА</div>
+                            <div class="services__text">Выявление проблем компьютера по которым он не включается, неисправно работает,
+                                тормозит, виснет, периодически выключается, перегревается и т.д.</div>  
+                        </div>
+
+                        <div class="services__item">
+                            <img class="services__icon" 
+                            src="/media/service/3.jpg" onclick="scrollToTarget1()" id="clickableImage" alt="">
+                            <div class="services__title">Установка/Исправление ПО</div>
+                            <div class="services__text">Установка ОС, ПО разной сложности, исправление ошибок ОС, 
+                                настройка параметров BIOS и т.д.</div>  
+                        </div>          
+                        
+                        <hr class="hr">
+                        
+                         <div class="services__item">
+                            <img class="services__icon" 
+                            src="/media/service/4.jpg" onclick="scrollToTarget2()" id="clickableImage" alt="">
+                            <div class="services__title">Картриджи</div>
+                            <div class="services__text">Заправка, ремонт картриджей, поставка новых картриджей,
+                                чернил. </div>                            
+                        </div>
+
+                        <div class="services__item">
+                            <img class="services__icon" 
+                            src="/media/service/5.jpg" onclick="scrollToTarget2()" id="clickableImage" alt="">
+                            <div class="services__title">Ремонт</div>
+                            <div class="services__text">Ремонт принтеров, МФУ, плоттеров, сканеров.</div>  
+                        </div>
+
+                        <div class="services__item">
+                            <img class="services__icon" 
+                            src="/media/service/6.jpg" onclick="scrollToTarget3()" id="clickableImage" alt="">
+                            <div class="services__title">Кондиционеры</div>
+                            <div class="services__text">настройка, ТО, монтаж/демонтаж кондиционеров</div>  
+                        </div>  
+                    </div>
+                </div>
+            </section>  
+            
+            <section class="section">
+                <div class="cont">
+                    <div class="section__header">                        
+                        <h3 class="section__title">Прайс-Лист</h3>
+                        <div class="section__item">
+                            {% if request.user.is_authenticated %}
+                                <h3 class="section__item">Можете выбрать услуги<h3>
+                                {% else %}
+                                <h3 class="section__item">Нужно авторизоваться чтоб выбрать услуги<h3>
+                            {% endif %}
+                            <h3 class="section__suptitle">Компьютеры сегодня есть у большинства людей. Но часто ли Вы проводите диагностику или ремонт своего ПК? А ведь рано или поздно с ремонтом компьютера приходится сталкиваться каждому пользователю. Выходят из строя отдельные его части, устаревает операционная система или же просто забивается пылью системный блок – в любом случае, требуется провести ремонт и обслуживание.
+
+                                И в этом тонком деле не стоит полагаться на себя и свои знания. Лучше доверить компьютер специалистам, знающим толк в настройке и подборе комплектующих для Вашего ПК.
+                                
+                                 Мы предоставим Вам все услуги, необходимые для того, чтобы вдохнуть жизнь и вернуть работоспособность Вашей компьютерной технике.</h3>
+                            <div class="tablemargin" id="targetElement1">
+                                <table class="table">
+                                <tr>
+                                    <th>Наименование</th>
+                                    <th>Стоимость</th>
+                                    {% if request.user.is_authenticated %}
+                                    <th>
+                                        Добавить
+                                    </th>
+                                    {% endif %}
+                                    
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Диагностика компьютера/ноутбука/моноблока (выявление неисправностей на программных и аппаратных уровнях)</td>
+                                    <td class="servicePrice">1500 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                             
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Установка ПО</td>
+                                    <td class="servicePrice">1000 — 5000 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Установка/переустановка ОС </td>
+                                    <td class="servicePrice">5000 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Восстановление данных из поврежденных секторов/удаленных разделов диска</td>
+                                    <td class="servicePrice">20000 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                             
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Тех обслуживание(чистка+замена термопасты, замена охлаждающей жидкости и прочистка всех каналов в СВО) </td>
+                                    <td class="servicePrice">1500 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>                            
+                                <tr>
+                                    <td class="serviceName">Замена/установка комплектующих(не учитывая стоимость комплектующих)</td>
+                                    <td class="servicePrice">1500 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                </table> 
+                            </div>
+                        </div>    
+                        
+                        <div class="section__item">
+                            <h3 class="section__suptitle">Как и любой технике, кондиционеру рано или поздно понадобится ремонт. Как говорится – ничто не вечно. Необходимо четко понимать, чтобы сократить вероятность поломки, за кондиционером необходимо ухаживать. Кондиционер может прийти в неисправное состояние по разным причинам. Наши специалисты проведут осмотр и полную диагностику Вашего кондиционера. Если возможен ремонт без демонтажа, ремонт произведется на месте. В ином случае наши специалисты самостоятельно демонтируют неисправный блок кондиционера и доставят в сервисный центр для последующего ремонта. 
+
+                                Стоимость  ремонта кондиционера зависит от характера неисправности, а так же от типа и мощности кондиционера. Окончательная стоимость ремонта может быть определена после полной диагностики.</h3>
+                            <div class="tablemargin" id="targetElement3">
+                                <table class="table">
+                                <tr>
+                                    <th>Наименование</th>
+                                    <th>Стоимость</th>
+                                    {% if request.user.is_authenticated %}
+                                    <th>
+                                        Добавить
+                                    </th>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Монтаж/демонтаж внешнего блока кондиционера</td>
+                                    <td class="servicePrice">20000 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Монтаж/демонтаж внутреннего блока кондиционера</td>
+                                    <td class="servicePrice">10000 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Чистка фильтров внутреннего блока кондиционера </td>
+                                    <td class="servicePrice">от 3000 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Мойка наружного блока кондиционера</td>
+                                    <td class="servicePrice">от 5000 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                </table> 
+                            </div>
+                        </div>
+
+                        <div class="section__item">
+                            <h3 class="section__suptitle">Современная полноценная работа в офисе, дома или в любом госучреждении сегодня не обходится без исправно функционирующей оргтехники. МФУ, сканеры и принтеры существенно упрощают рабочий процесс, и даже малейшая неисправность может повлечь за собой приостановку рабочего процесса.
+
+                                Наша компания предоставляет профессиональные услуги по обслуживанию монохромной и цветной лазерной печатающей техники форматов А4 и А3.
+                                
+                                Предоставление услуг выполняем как с выездом на локацию заказчика, так и в нашем сервисном центре.
+                                
+                                На период ремонта, при необходимости, предоставляем Клиенту подменную технику.</h3>
+                            <div class="tablemargin" id="targetElement2">
+                                <table class="table">
+                                <tr>
+                                    <th>Наименование</th>
+                                    <th>Стоимость</th>
+                                    {% if request.user.is_authenticated %}
+                                    <th>
+                                        Добавить
+                                    </th>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Заправка картриджа</td>
+                                    <td class="servicePrice">700 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Восстановление картриджа(замена ракеля, фотовала, коротрона)</td>
+                                    <td class="servicePrice">1280 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Ремонт лазерного/струйного принтера, МФУ </td>
+                                    <td class="servicePrice">6900 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Сложный ремонт лазерного/струйного принтера, МФУ</td>
+                                    <td class="servicePrice">14750 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                             
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Замена термопленки, нижнего вала, тормозной площадки, ролика захвата бумаги и пр.</td>
+                                    <td class="servicePrice">2950 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                             
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>   
+                                <tr>
+                                    <td class="serviceName">Подключение и настройка оборудования(принтер, плоттер, сканер, интерактивные доски, проекционные экраны и пр.)</td>
+                                    <td class="servicePrice">9500 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="serviceName">Монтаж/демонтаж мультимедийного оборудования (проектор, TV, LCD и плазменная панель, интерактивной доски, проекционного экрана и пр.) </td>
+                                    <td class="servicePrice">12 500 ₸</td>
+                                    {% if request.user.is_authenticated %}
+                                    <td>
+                                        <form>
+                                            <label>
+                                              <input type="checkbox" class="serviceCheckbox">                                              
+                                            </label>
+                                          </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                </table> 
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </section> 
+            
+            <script>
+                function scrollToTarget1() {
+                  var targetElement = document.getElementById('targetElement1');
+                  targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+                function scrollToTarget2() {
+                    var targetElement = document.getElementById('targetElement2');
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+                function scrollToTarget3() {
+                    var targetElement = document.getElementById('targetElement3');
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            </script>
+            
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var serviceCheckboxes = document.querySelectorAll('.serviceCheckbox');
+            
+                    // Обработчик события изменения состояния чекбокса
+                    function handleCheckboxChange() {
+                        // Получение текущего состояния чекбокса
+                        var isChecked = this.checked;
+            
+                        // Получение названия услуги из предыдущего (по DOM) TD
+                        var serviceName = this.closest('tr').querySelector('.serviceName').textContent;
+            
+                        // Получение цены услуги из предыдущего (по DOM) TD
+                        var servicePrice = this.closest('tr').querySelector('.servicePrice').textContent;
+            
+                        // Получение или инициализация объекта с выбранными услугами в localStorage
+                        var selectedServices = JSON.parse(localStorage.getItem('selectedServices')) || {};
+            
+                        // Обновление объекта с состоянием чекбоксов для конкретной услуги
+                        var serviceKey = serviceName;
+                        selectedServices[serviceKey] = {
+                            isChecked: isChecked,
+                            serviceName: serviceName,
+                            servicePrice: servicePrice
+                        };
+            
+                        // Сохранение обновленного объекта в localStorage
+                        localStorage.setItem('selectedServices', JSON.stringify(selectedServices));
+            
+                        // Ваш код для дополнительных действий после изменения состояния чекбокса
+                    }
+            
+                    // Привязка обработчика события к каждому чекбоксу
+                    serviceCheckboxes.forEach(function(checkbox) {
+                        checkbox.addEventListener('change', handleCheckboxChange);
+            
+                        // Проверка и установка начального состояния чекбоксов при загрузке страницы
+                        var selectedServices = JSON.parse(localStorage.getItem('selectedServices')) || {};
+                        var serviceKey = checkbox.getAttribute('data-service-key');
+                        var serviceData = selectedServices[serviceKey];
+            
+                        if (serviceData) {
+                            checkbox.checked = serviceData.isChecked;
+                        }
+                    });
+                });
+            </script>
+            
+{%endblock%}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{%block graph%}
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.stock.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+  var dps1 = [], dps2= [];
+  var stockChart = new CanvasJS.StockChart("chartContainer",{
+    theme: "light2",
+    exportEnabled: true,
+    title:{
+      text:"StockChart with Date-Time Axis"
+    },
+    subtitles: [{
+      text: "Bitcoin Price (in USD)"
+    }],
+    charts: [{
+      axisX: {
+        crosshair: {
+          enabled: true,
+          snapToDataPoint: true
+        }
+      },
+      axisY: {
+        prefix: "$"
+      },
+      data: [{
+        type: "candlestick",
+        yValueFormatString: "$#,###.##",
+        dataPoints : dps1
+      }]
+    }],
+    navigator: {
+      data: [{
+        dataPoints: dps2
+      }],
+      slider: {
+        minimum: new Date(2018, 04, 01),
+        maximum: new Date(2018, 06, 01)
+      }
+    }
+  });
+  $.getJSON("{% url 'stock_data_json' %}", function (data) {
+    for (var i = 0; i < data.length; i++) {
+        dps1.push({
+            x: new Date(data[i].timestamp),
+            y: [Number(data[i].open_price), Number(data[i].high_price), Number(data[i].low_price), Number(data[i].close_price)]
+        });
+        dps2.push({x: new Date(data[i].timestamp), y: Number(data[i].close_price)});
+    }
+    stockChart.render();
+  });
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" class="graph"></div>
+{%endblock%}
